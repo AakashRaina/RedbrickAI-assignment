@@ -1,5 +1,6 @@
 import { memo } from "react";
 import { useRandomNumber } from "../../utils";
+import "./Content.css";
 
 const Content = memo(function ({
   open,
@@ -12,7 +13,11 @@ const Content = memo(function ({
 
   if (!open) return null;
 
-  return <div>Your random number is: {randomNumber}</div>;
+  return (
+    <div className='random-number'>
+      Your random number is: <p>{randomNumber}</p>
+    </div>
+  );
 });
 
 export default Content;
