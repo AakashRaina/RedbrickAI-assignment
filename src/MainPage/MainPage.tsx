@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 // START - DO NOT EDIT
 function useRandomNumber() {
@@ -7,20 +7,18 @@ function useRandomNumber() {
 }
 // END - DO NOT EDIT
 
-const startTime = Date.now();
 function useGetTimer() {
-  const [time, setTime] = React.useState<string>("");
+  const [time, setTime] = React.useState<number>(0);
 
-  React.useEffect(() => {
-    const intervalRef = window.setInterval(() => {
-      const now = Date.now();
+  useEffect(() => {
+    const intervalTimerId = setInterval(() => {
+      setTime((prev) => prev + 1);
+    }, 1000);
 
-      setTime((now - startTime).toString());
-    });
     return () => {
-      clearInterval(intervalRef);
+      clearInterval(intervalTimerId);
     };
-  });
+  }, []);
 
   return time;
 }
@@ -42,6 +40,7 @@ const MainPage: React.FC = () => {
   const [open, setOpen] = React.useState({ value: false });
 
   const time = useGetTimer();
+
   return (
     <div>
       <div>The page loaded {time} seconds ago</div>
