@@ -13,7 +13,9 @@ const MainPage = (): JSX.Element => {
     <div className='content-container'>
       <div className='timer'>The page loaded {time} seconds ago</div>
 
-      <button onClick={() => setOpen(true)}>Generate random number</button>
+      <button onClick={() => setOpen((prev) => !prev)}>
+        Generate random number
+      </button>
 
       <Content open={open} />
     </div>
