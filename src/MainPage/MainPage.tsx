@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, memo } from "react";
 
 // START - DO NOT EDIT
 function useRandomNumber() {
@@ -23,9 +23,7 @@ function useGetTimer() {
   return time;
 }
 
-const Content: React.FC<{
-  open: any;
-}> = ({ open }) => {
+const Content = memo(function ({ open }: { open: boolean }) {
   // START - DO NOT EDIT
   const randomNumber = useRandomNumber();
   // END - DO NOT EDIT
@@ -33,7 +31,7 @@ const Content: React.FC<{
   if (!open) return null;
 
   return <div>Your random number is: {randomNumber}</div>;
-};
+});
 
 const MainPage: React.FC = () => {
   const [open, setOpen] = React.useState(false);
