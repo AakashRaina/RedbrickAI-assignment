@@ -25,35 +25,26 @@ function useGetTimer() {
 
 const Content: React.FC<{
   open: any;
-}> = (props) => {
+}> = ({ open }) => {
   // START - DO NOT EDIT
   const randomNumber = useRandomNumber();
   // END - DO NOT EDIT
-  if (!props.open.value) {
-    return null;
-  }
+
+  if (!open) return null;
 
   return <div>Your random number is: {randomNumber}</div>;
 };
 
 const MainPage: React.FC = () => {
-  const [open, setOpen] = React.useState({ value: false });
+  const [open, setOpen] = React.useState(false);
 
   const time = useGetTimer();
 
   return (
     <div>
       <div>The page loaded {time} seconds ago</div>
-      <button
-        onClick={() =>
-          setOpen((value) => {
-            value.value = !value.value;
-            return value;
-          })
-        }
-      >
-        Generate random number
-      </button>
+
+      <button onClick={() => setOpen(true)}>Generate random number</button>
 
       <Content open={open} />
     </div>
