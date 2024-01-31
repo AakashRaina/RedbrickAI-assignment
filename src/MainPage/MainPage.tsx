@@ -1,14 +1,14 @@
-import React, { useEffect, memo } from "react";
+import { useEffect, memo, useState } from "react";
 
 // START - DO NOT EDIT
-function useRandomNumber() {
+function useRandomNumber(): number {
   const randomNumber = Math.trunc(Math.random() * 1000);
   return randomNumber;
 }
 // END - DO NOT EDIT
 
-function useGetTimer() {
-  const [time, setTime] = React.useState<number>(0);
+function useGetTimer(): number {
+  const [time, setTime] = useState<number>(0);
 
   useEffect(() => {
     const intervalTimerId = setInterval(() => {
@@ -23,7 +23,11 @@ function useGetTimer() {
   return time;
 }
 
-const Content = memo(function ({ open }: { open: boolean }) {
+const Content = memo(function ({
+  open,
+}: {
+  open: boolean;
+}): JSX.Element | null {
   // START - DO NOT EDIT
   const randomNumber = useRandomNumber();
   // END - DO NOT EDIT
@@ -33,8 +37,8 @@ const Content = memo(function ({ open }: { open: boolean }) {
   return <div>Your random number is: {randomNumber}</div>;
 });
 
-const MainPage: React.FC = () => {
-  const [open, setOpen] = React.useState(false);
+const MainPage = (): JSX.Element => {
+  const [open, setOpen] = useState(false);
 
   const time = useGetTimer();
 
