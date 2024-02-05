@@ -1,12 +1,15 @@
 .content-container{
-  border:1px solid rgb(55, 55, 55);
   color:white;
   padding:20px;
-  border-radius: 5px;
+  border-radius: 15px;
   height: 150px;
-  width: 400px;
-  background-color: rgb(18, 18, 18);
+  width: 600px;
+  background-color: rgb(23, 23, 23);
   font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .timer{
@@ -16,7 +19,12 @@
 button{
   padding: 10px;
   border: none;
-  color: black;
-  border-radius: 4px;
+  color: white;
+  background-color: rgb(75, 74, 74);
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 18px;
+  padding: 5px;
+  margin-bottom: -5px;
+  margin-top: 5px;
 } 
